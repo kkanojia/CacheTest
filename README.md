@@ -1,1 +1,1 @@
-Tryying out a sample cache implementation in java.
+Sample LRU cache in java using Linked HashMap
