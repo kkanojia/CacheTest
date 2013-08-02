@@ -2,8 +2,12 @@ package com.kunal.implementation;
 
 import java.util.LinkedHashMap;
 
-public class Cache extends LinkedHashMap {
+public class Cache<K,V> extends LinkedHashMap<K,V> {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final int capacity;
 	private int hitCount =0;
 	private int accessCount =0;
@@ -15,10 +19,10 @@ public class Cache extends LinkedHashMap {
 	}
 	
 	@Override
-	public Object get(Object key) {
+	public V get(Object key) {
 		
 		accessCount++;
-		Object obj = super.get(key);
+		V obj = super.get(key);
 		if(obj != null){
 			hitCount++;
 		}
@@ -26,7 +30,7 @@ public class Cache extends LinkedHashMap {
 	}
 	
 	@Override
-	protected boolean removeEldestEntry(java.util.Map.Entry eldest) {
+	protected boolean removeEldestEntry(java.util.Map.Entry<K,V> eldest) {
 		return this.size() > capacity;
 	}
 
